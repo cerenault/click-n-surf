@@ -13,10 +13,10 @@ L'objectif de ce projet et de fournir à des utilisateurs intéréssés par le s
 - Développement d'une api : Basée sur FastApi la première partie du projet sera de mettre en place une api mettant à disposition 2 routes prinipales à minima. Une première permettant de récupérer la listes des noms de l'ensemble des spots français ainsi que sa position géographique (latitude/longitude). La deuxième route permettant de récupérer un ensemble d'information concernant un spot en particulier.
   Compétences mises en oeuvre :
 
-| Compétences                                 | Compétences |
-| :------------------------------------------ | ----------: |
-| Développement d'une api Python (fastApi)    |          ?  |
-| Développement d'une interface front (react) |           ? |
+| Compétences                                 | Savoir associé |
+| :------------------------------------------ | -------------: |
+| Développement d'une api Python (fastApi)    |             ?  |
+| Développement d'une interface front (react) |              ? |
 
 ### Seconde partie du projet :
 
