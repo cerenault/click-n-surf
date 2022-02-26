@@ -38,3 +38,6 @@ La cible de cette application web est double.
 ## 3. Retro
 
 Suivi de projet, kanban avec _Trello_ (https://trello.com/b/GYy1yz9A/click-n-surf)
+
+Site scrappé :
+https://www.surfingfrance.com/federation/les-spots-de-surf-en-france.html
