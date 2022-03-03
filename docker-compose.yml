@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  api:
+    image: tiangolo/uvicorn-gunicorn-fastapi
+    container_name: api-clicknsurf
+    ports:
+      - "80:80"
+    volumes:
+      - ./api:/app
+    entrypoint: /start-reload.sh
+  db:
+    image: mongo
+    container_name: db-clicknsurf
+    ports:
+      - "27017:27017"
+    volumes:
+      - dbmongoconf:/data/configdb
+      - dbmongodata:/data/db
+volumes:
+  dbmongoconf:
+  dbmongodata:
+  
