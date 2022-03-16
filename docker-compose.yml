@@ -17,6 +17,17 @@ services:
     volumes:
       - dbmongoconf:/data/configdb
       - dbmongodata:/data/db
+  front:
+    container_name: front-react
+    image: react
+    build:
+      context: ./front
+      target: development
+    volumes:
+      - ./front/src:/app/src
+    ports:
+      - 3000:3000
+
 volumes:
   dbmongoconf:
   dbmongodata:
