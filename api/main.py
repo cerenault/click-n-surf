@@ -58,7 +58,7 @@ async def get_spots_by_region(region):
 
 @app.post("/spot", response_model=Spot)
 async def post_spot(spot: Spot):
-    exist = await isExistantSpot(spot.dict()['name'])
+    exist = await isExistantSpot(spot)
     if not exist:
         response = await create_spot(spot.dict())
         if response:
@@ -78,14 +78,16 @@ async def delete_spot(name):
     raise HTTPException(400, "Can't delete there is no spot {name}")
 
 
-async def isExistantSpot(name):
-    spot_name = name.lower()
+async def isExistantSpot(spot: Spot):
+    spot_name = spot.dict()['name'].lower()
+    spot_region = spot.dict()['region'].lower()
     spots = await fetch_all_spots()
     # List spots OK
     if spots:
         for spot in spots:
             # Check if spot already exists
             if spot.dict()['name'].lower() == spot_name:
-                return True
+                if spot.dict()['region'].lower() == spot_region:
+                    return True
     # Error list spots or spot doesn't already exists
     return False
