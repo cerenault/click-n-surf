@@ -58,10 +58,13 @@ async def get_spots_by_region(region):
 
 @app.post("/spot", response_model=Spot)
 async def post_spot(spot: Spot):
-    response = await create_spot(spot.dict())
-    if response:
-        return response
-    raise HTTPException(400, "Something it's wrong, BAD request ")
+    exist = await isExistantSpot(spot.dict()['name'])
+    if not exist:
+        response = await create_spot(spot.dict())
+        if response:
+            return response
+        raise HTTPException(400, "Something it's wrong, BAD request ")
+    raise HTTPException(400, "Spot already exist ")
 
 if __name__ == '__main__':
     uvicorn.run(app, host="127.0.0.1", port="8000", reload=True)
@@ -73,3 +76,16 @@ async def delete_spot(name):
     if response:
         return "response"
     raise HTTPException(400, "Can't delete there is no spot {name}")
+
+
+async def isExistantSpot(name):
+    spot_name = name.lower()
+    spots = await fetch_all_spots()
+    # List spots OK
+    if spots:
+        for spot in spots:
+            # Check if spot already exists
+            if spot.dict()['name'].lower() == spot_name:
+                return True
+    # Error list spots or spot doesn't already exists
+    return False
