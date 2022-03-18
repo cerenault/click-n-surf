@@ -37,3 +37,8 @@ async def create_spot(spot):
     doc = spot
     result = await collection.insert_one(doc)
     return doc
+
+
+async def remove_spot(name):
+    doc = await collection.delete_one({"name": name})
+    return True

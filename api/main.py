@@ -9,6 +9,7 @@ from database import (
     fetch_spots_by_region,
     fetch_one_spot,
     create_spot,
+    remove_spot,
 )
 
 app = FastAPI()
@@ -64,3 +65,11 @@ async def post_spot(spot: Spot):
 
 if __name__ == '__main__':
     uvicorn.run(app, host="127.0.0.1", port="8000", reload=True)
+
+
+@app.delete("/spot/{name}")
+async def delete_spot(name):
+    response = await remove_spot(name)
+    if response:
+        return "response"
+    raise HTTPException(400, "Can't delete there is no spot {name}")
