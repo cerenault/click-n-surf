@@ -1,8 +1,11 @@
-import logo from './logo.svg';
+import logo from './assets/logo(1).png';
+import github from './assets/github.png'
 import './App.css';
 import { useEffect, useState } from 'react';
 import SpotsList from './components/SpotsList';
 import axios from 'axios'
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 import React, { useRef } from 'react'; 
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
@@ -41,12 +44,30 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>SURF MAP</h1>
-        <SpotsList spotsList={spotsList}/>
+        <div className='App-header-logo'>
+          <a href='http://localhost:3000' alt='home'>
+            <img src={logo} alt="" className='LogoImg' />
+          </a>
+        </div>
+        <Stack className='App-header-menu' direction="row" spacing={2}>
+          <Button className='MUI-Button' variant="outlined" disabled>List of Spots</Button>
+          <Button className='MUI-Button' variant="outlined" disabled>Contact</Button>
+          <a href='https://github.com/cerenault/click-n-surf'>
+            <img src={github} alt='github-project' className='GithubImg' />
+          </a>
+        </Stack>        
       </header>
-      <div>
-                <div ref={mapContainer} className="map-container" />
-            </div>
+      
+      <section className='Section'> 
+        
+        <div className='Section-Map'>
+          <div ref={mapContainer} className="map-container" />
+        </div>
+       
+        <div className='Section-Spots'>
+          <SpotsList spotsList={spotsList}/>
+        </div>
+      </section>
     </div>
   );
 }
