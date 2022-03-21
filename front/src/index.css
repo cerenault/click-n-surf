@@ -5,15 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("./assets/palm-trees-sky.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-.map-container {
-  height: 400px;
-  width: 400px;
-  padding: 10px 10px 10px 10px;
 }
