@@ -55,12 +55,12 @@
 }
 
 .map-container {
-  width: 50em;
-  height: 50em;
+  width: 30em;
+  height: 30em;
   padding: 10px 10px 10px 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
 }
 
 .mapboxgl-canvas {
-  height: 70em;
+  height: 50em;
 }

@@ -40,7 +40,7 @@ const SpotsList = (props) => {
         <div>
             <Box>
                 <FixedSizeList
-                    height={600}
+                    height={400}
                     itemCount={1}
                     itemSize={20}
                     width={500}

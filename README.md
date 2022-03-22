@@ -1,43 +1,95 @@
-# <center>CLICK-N-SURF : Projet tutoré LP Dev Cloud</center>
+# <center>Click-N-Surf Project : LP Dev Cloud</center>
 
-## 1. Description du projet :
+Technology Stack : Docker, MongoDB, Python FastApi, React JS
 
-L'objectif de ce projet et de fournir à des utilisateurs intéréssés par le surf de découvrir les lieux de pratique et les différents spots français. Petit guide de découverte il permettra au débutant souhaitant s'initier à cette pratique de trouver les spots proches de chez eux où du lieu de vacances. Il permettra aussi aux initiés de découvrir des lieux de pratique en dehors de leur lieu habituel de pratique.
+## 1. Project description :
 
-## Organisation du projet et compétences misses en oeuvre :
+The objective of this project is to give some informations about french surf spots for people interessed to discover surf and their different playing fields. As a little guide, the website can informe the beginner who wants to discover this practice by french spots positions and helps the surfers to expend their activities beyond their usual places.
 
-### Première partie du projet :
+## Organisation and skills developed :
 
-- Recherche des données : La première partie du projet va consister à trouver et récupérer des infos sur les différents spots de surf français. Deux Possibilités vont émmérger de cela. Si des api existe, il suffira juste de se connecter à l'interface et récupérer les données interessantes. Seconde option, trouver des sites web référençants des données et utiliser une bibliothèque de scrapping pour collecter les infos voulues.
+### - First part :
 
-- Développement d'une api : Basée sur FastApi la première partie du projet sera de mettre en place une api mettant à disposition 2 routes prinipales à minima. Une première permettant de récupérer la listes des noms de l'ensemble des spots français ainsi que sa position géographique (latitude/longitude). La deuxième route permettant de récupérer un ensemble d'information concernant un spot en particulier.
-  Compétences mises en oeuvre :
+#### Research data and initialize the database
 
-| Compétences                                 | Savoir associé |
-| :------------------------------------------ | -------------: |
-| Développement d'une api Python (fastApi)    |             ?  |
-| Développement d'une interface front (react) |              ? |
+The first part of the project is to find pertinent informations of different french spots and constitute a database. There is no pertinent api for that so i decided to scrap data from a website (with beautifulSoup). This allowed me to collect some informations about more hundred spots in metropolitan France and Dom-Tom.
 
-### Seconde partie du projet :
+After that I create de MongoDB and a database from the [_dataset_surf_spots.csv_](https://github.com/cerenault/click-n-surf/blob/main/dataset_surf_spots.csv) file.
 
-Développement d'une partie front :
-Compétences mises en oeuvre : React/Redux
-La deuxième partie du projet consiste à mettre en place une partie front, développer en react reprenant tous les spots sur une carte de France afin de visualiser les spots dans sur les différentes régions françaises. Et suivant l'avanceement pouvoir cliquer sur un spot en particulier afin d'en avoir des informations plus précises.
+#### Create the stack
 
-## 2. Produit :
+I decide to dockerize all services in a docker-compose. For the beginning I used existants images for create a docker-compose with MongoDB and FastApi.
 
-La cible de cette application web est double.
+- The Api development : Based on Python FastApi, I connected the database to the Api with [_PyMongo_](https://pymongo.readthedocs.io/en/stable/) and I create different endpoints :
 
-- D'un côté les vacanciers et novices. Des personnes en vacances proche des lieux de pratique de surf souhaitant s'initier à la pratique et qui pourra s'orienter facilement vers un endroit reconnu ou des écoles sont généralement implantées.
-- D'un autre côté les pratiquants occasionnels ou expérimentés qui souhaiteraient découvrir de nouvelles régions à travers leur pratique favorite. Ou des surfeurs souhaitant découvrir la richesse des spots français.
+  - List of all spots in db
+  - List all spots from a specific region
+  - Return informations about one spot
+  - Add a new spot
+  - Delete a spot
+
+I develop some test with Pytest for check the result of the different functions and endpoints.
+
+#### Skills :
+
+| Skills                                                       |                                                                                                                                     Associated Knowledge |
+| :----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Create a stack from scratch                                  |                                                                                                                 Identify needs for the project objective |
+| Collect data and create a database                           |                                                                                                           Search pertinent data and sorting informations |
+| Api implementation and database relation                     |                                 Understand the mechanism and the relation from db to api. Read the doc, research of examples and fit them to the project |
+| Test implementation                                          |                                     Identify the pertinent parts of code who need to be test. Fully understand the features tested and their mechanisms. |
+| Orchestration and management of services in a docker-compose |                                    Identify the structure of the project and the links of the differents services. Organize volumes for the data stored. |
+| Front implementation and relation with the Api               |   Identify the external services we need (packages, dependances), understand the mechanism between api and front-end. Consider the target of the product |
+| Project management                                           | Evaluate the complexity of tasks by considering time project. Evaluate time for every task to do. Identify and define the process of task implementation |
+
+### - Second part :
+
+#### Front-end implementation :
+
+Technology used : React JS.
+
+The second part concern the front-end implementation. I decide to work with react. The objective was to realise a simplist website. Before implementation I did a model of the website with [_Figma_](https://www.figma.com/file/bMzeamWIQONacQELLGowFi/CLICK-N-SURF?node-id=0%3A1).
+I integrated a opensource map with the Api [_Mapbox_](https://www.mapbox.com/) to display a France map and show the different spots.
+And next to the map I display a list of clickable items of the different spots.
+This part is not completed (the map can't display the spot and the items of the list are not redirected).
+
+## 2. Product :
+
+This project is for two target .
+
+- One the one hand for summer tourists, beginner and curious. People near the surf spots but who don't know about surfing. This people can get informations about recognized places where they can do surf and who generaly surf school are implented.
+
+- And on the other hand occasional surfer or confirmed who wants to discover new regions through their favorite practice or discover the french surf spots wealth.
 
 | Target Group | Besoin | Produit | Obectif metier |
 | :----------- | :----: | :-----: | -------------: |
 | ?            |   ?    |    ?    |              ? |
 
-## 3. Retro
+## 3. Organisation (Kanban)
 
-Suivi de projet, kanban avec _Trello_ (https://trello.com/b/GYy1yz9A/click-n-surf)
+For the organisation I chosed to work with _Trello_ tool.
 
-Site scrappé :
-https://www.surfingfrance.com/federation/les-spots-de-surf-en-france.html
+(https://trello.com/b/GYy1yz9A/click-n-surf)
+
+## 4. Future : To Do
+
+Extends datas for spots :
+
+- add a little description of a spot,
+- accessibility (road, bike, on foot),
+- popularity (participation rate, tourist attendance),
+- floor (sand, reef),
+- level accessibility (from beginner to advanced)
+
+Improve api :
+
+- Find the nearest spot from a position (gps coordinates)
+- Select spot from level accessibility
+
+Improve Front :
+
+- Place de spot in a map
+- Select one spot and show informations about it
+- Sort the spots from regions/level...
+- Show the nearest spot in a map
+- Improve responsive and accessibility.

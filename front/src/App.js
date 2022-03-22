@@ -29,7 +29,7 @@ function App() {
     const map = useRef(null);
     const [lng, setLng] = useState(2.3262946);
     const [lat, setLat] = useState(46.75168);
-    const [zoom, setZoom] = useState(4.9);
+    const [zoom, setZoom] = useState(4.3);
     
 
   const [spotsList, setSpotsList] = useState([{}])
