@@ -1,29 +1,52 @@
 import SpotCard from "./SpotCard"
-import { FixedSizeList as List } from 'react-window';
+import { FixedSizeList } from 'react-window';
 import Box from '@mui/material/Box';
 
-const SpotsList = (props) => {
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import { padding } from "@mui/system";
 
+
+const SpotsList = (props) => {
+    
+    const regionList = []
+    props.spotsList.map(spot => regionList.push(spot.region))
+    const uniqRegionList = [...new Set(regionList)]
+    
     const Row = ({ index, style }) => (
-        props.spotsList.map(spot => <div>{spot.name}</div>)
-        // <div style={style}>Row {index +1 }</div>
+        
+        //uniqRegionList.map(region => <div key={region}>{region}</div>)
+        props.spotsList.map(spot => {
+            return (
+                <ListItemButton sx={{
+                    borderBottom: 1,
+                    borderColor: 'primary.main',
+                    margin: 0.5
+                }} key={index}>
+                        <ListItemText>{spot.name}</ListItemText>
+                    </ListItemButton>
+
+                // <ListItem style={style} key={index} component="div">
+                //     <ListItemButton>
+                //         <ListItemText primary={spot.name} />
+                //     </ListItemButton>
+                // </ListItem>
+            )
+        })
     );
+    
     return (
         <div>
-            {/* {props.spotsList.map(spot => {
-                return <SpotCard key={spot.name} spot={spot}></SpotCard>
-            })} */}
-            <p>ok {props.spotsList.length}</p>
-            {/* {props.spotsList.map(spot => <p>{spot.name}</p>)} */}
             <Box>
-                <List
-                    height={350}
-                    itemCount={props.spotsList.length}
-                    itemSize={35}
+                <FixedSizeList
+                    height={600}
+                    itemCount={1}
+                    itemSize={20}
                     width={500}
                 >
-                {Row}
-                </List>
+                    {Row}
+                </FixedSizeList>
             </Box>
         </div>
     )

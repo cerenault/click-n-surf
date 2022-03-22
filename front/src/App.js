@@ -18,18 +18,18 @@ function App() {
   useEffect(() => {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
-    container: mapContainer.current,
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [lng, lat],
-    zoom: zoom
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [lng, lat],
+      zoom: zoom
     });
-    });
+  });
 
   const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(2.3262946);
     const [lat, setLat] = useState(46.75168);
-    const [zoom, setZoom] = useState(4);
+    const [zoom, setZoom] = useState(4.9);
     
 
   const [spotsList, setSpotsList] = useState([{}])
