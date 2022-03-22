@@ -24,7 +24,7 @@ services:
       context: ./front
       target: development
     volumes:
-      - ./front/src:/app/src
+      - ./front:/app/front
     ports:
       - 3000:3000
     env_file:

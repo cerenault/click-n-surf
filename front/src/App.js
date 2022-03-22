@@ -52,7 +52,7 @@ function App() {
         <Stack className='App-header-menu' direction="row" spacing={2}>
           <Button className='MUI-Button' variant="outlined" disabled>List of Spots</Button>
           <Button className='MUI-Button' variant="outlined" disabled>Contact</Button>
-          <a href='https://github.com/cerenault/click-n-surf'>
+          <a href='https://github.com/cerenault/click-n-surf' target='_blank' rel='noreferrer noopener'>
             <img src={github} alt='github-project' className='GithubImg' />
           </a>
         </Stack>        
